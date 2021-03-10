@@ -8,15 +8,15 @@
 class Music_Player
 {
 private:
-    std::shared_ptr<sf::Music> music;
+    sf::Music music;
 
     bool isPlaying = false;
 public:
-    Music_Player(std::shared_ptr<sf::Music> music, std::string path);
+    Music_Player(std::string path);
 
     void playTrack();
-    void stopTrack() { this->music->stop(); }
-    void pauseTrack() { this->music->pause(); }
+    void stopTrack() { this->music.stop(); }
+    void pauseTrack() { this->music.pause(); }
 
     void changeTrack(std::string path);
 

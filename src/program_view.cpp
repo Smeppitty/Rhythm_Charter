@@ -11,7 +11,6 @@ Program_View::Program_View(std::shared_ptr<Program_Logic> program_logic)
 
 void Program_View::init()
 {   
-    this->music = std::make_shared<sf::Music>();
     // this->music_player = std::make_shared<Music_Player>(this->music,"../data/music/Milf_Inst.ogg");
 
     play_button = std::make_shared<Button>("",sf::Color::White, sf::Vector2f(WINDOW_SIZE.x/2.0f, WINDOW_SIZE.y-64.0f), sf::Vector2f(32.0f, 32.0f));

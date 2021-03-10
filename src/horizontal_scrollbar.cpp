@@ -19,10 +19,22 @@ Horizontal_Scrollbar::Horizontal_Scrollbar(std::string path, sf::Color fillColor
     /*
     / Slider in the scrollbar
     */
-    this->thumb.setPosition(this->position);
+    this->thumb.setPosition(this->position.x, this->position.y+this->thumb.getRadius());
     this->thumb.setRadius(this->dimensions.y/2);
     this->thumb.setOrigin(this->thumb.getRadius(), this->thumb.getRadius());
 }
+
+bool Horizontal_Scrollbar::isClicked(std::shared_ptr<sf::RenderWindow> window)
+{
+
+}
+
+
+void Horizontal_Scrollbar::scroll(std::shared_ptr<sf::RenderWindow> window)
+{
+
+}
+
 
 void Horizontal_Scrollbar::draw(std::shared_ptr<sf::RenderWindow> window)
 {

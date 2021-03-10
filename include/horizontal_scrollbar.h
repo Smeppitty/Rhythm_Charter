@@ -21,6 +21,10 @@ private:
 public:
     Horizontal_Scrollbar(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);    
     void draw(std::shared_ptr<sf::RenderWindow> window);
+
+    bool isClicked(std::shared_ptr<sf::RenderWindow> window);
+    void scroll(std::shared_ptr<sf::RenderWindow> window);
+
 };
 
 #endif

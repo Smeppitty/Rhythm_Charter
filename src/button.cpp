@@ -13,8 +13,22 @@ Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf:
     if(!this->buttonTex.loadFromFile(path))
         this->buttonShape.setFillColor(fillColor);
     else
-        this->buttonShape.setTexture(&buttonTex);     
-        
+        this->buttonShape.setTexture(&buttonTex);            
+}
+bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
+{
+    sf::FloatRect rect = this->buttonShape.getGlobalBounds();
+
+    sf::Vector2i pixelPos = sf::Mouse::getPosition(*window);
+    sf::Vector2f worldPos = window->mapPixelToCoords(pixelPos);
+
+        if (rect.contains(worldPos)) {
+            {   
+                this->buttonShape.setFillColor(sf::Color(211,211,211,32));
+                return true;
+            }
+        }
+        return false; 
 }
 
 void Button::draw(std::shared_ptr<sf::RenderWindow> window)

@@ -12,5 +12,6 @@ public:
     GUI_Element(sf::Vector2f position);
 
     virtual void draw(std::shared_ptr<sf::RenderWindow> window) = 0;
+    virtual bool isClicked (std::shared_ptr<sf::RenderWindow> window) = 0;
 };
 #endif

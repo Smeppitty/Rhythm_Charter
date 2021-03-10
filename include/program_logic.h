@@ -8,7 +8,7 @@ class Program_Logic
 {
 private:
     bool activeState = true;
-    sf::Vector2f DEFAULT_WINDOW_SIZE = sf::Vector2f(1000.0f, 600.0f);
+    sf::Vector2f DEFAULT_WINDOW_SIZE = sf::Vector2f(1200.0f, 600.0f);
 
 public:
     Program_Logic();

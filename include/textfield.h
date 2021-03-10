@@ -1,24 +1,20 @@
-#ifndef BUTTON_H
-#define BUTTON_H
-
-#include <string>
+#ifndef TEXTFIELD_H
+#define TEXTFIELD_H
 
 #include "gui_element.h"
 
-class Button : public GUI_Element
+class Textfield : public GUI_Element
 {
 private:
     sf::Vector2f position;
-    sf::RectangleShape buttonShape;
-    sf::Texture buttonTex;
+    sf::RectangleShape txtFieldShape;
 
     std::string path;
     sf::Color fillColor;
     sf::Vector2f dimensions;
-
+    
 public:
-    Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions); 
-
+    Textfield(sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
     void draw(std::shared_ptr<sf::RenderWindow> window);
 };

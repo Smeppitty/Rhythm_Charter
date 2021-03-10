@@ -9,8 +9,8 @@ private:
     bool activeState = true;
 public:
     Program_Logic();
-    ~Program_Logic();
 
-    bool getActiveState() { return activeState;};
+    bool getActiveState() { return activeState; }
+    void setActiveState(bool b) { activeState = b; }
 };
 #endif 

@@ -4,5 +4,3 @@ Program_Logic::Program_Logic()
 {
     
 }
-
-Program_Logic::~Program_Logic(){}

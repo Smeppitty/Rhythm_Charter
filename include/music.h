@@ -8,6 +8,7 @@ class Music
 {
 private:
     std::string path;
+    sf::Music music;
 public:
     Music(std::string path);
     ~Music();

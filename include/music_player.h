@@ -15,15 +15,12 @@ public:
     Music_Player(std::string path);
 
     void playTrack();
-    void stopTrack() { this->music.stop(); }
-    void pauseTrack() { this->music.pause(); }
+    void stopTrack() { this->music.stop(); this->isPlaying = false; }
+    void pauseTrack() { this->music.pause(); this->isPlaying = false;}
 
     void changeTrack(std::string path);
 
     bool getPlaying() { return isPlaying; }
-    void setPlaying(bool p){ this->isPlaying = p; }
-    
-    
-        
+    void setPlaying(bool p){ this->isPlaying = p; }        
 };
 #endif

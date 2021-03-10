@@ -9,10 +9,12 @@ void Music_Player::playTrack()
 {
     this->music.setVolume(50);
     this->music.play();
+    this->isPlaying = true;
 }
 
 void Music_Player::changeTrack(std::string path)
 {
     this->music.stop();
+    this->isPlaying = false;
     this->music.openFromFile(path);
 }

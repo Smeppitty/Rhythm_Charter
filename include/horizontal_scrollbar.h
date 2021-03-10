@@ -24,7 +24,6 @@ public:
 
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
     void scroll(std::shared_ptr<sf::RenderWindow> window);
-
 };
 
 #endif

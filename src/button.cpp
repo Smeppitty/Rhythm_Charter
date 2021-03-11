@@ -24,16 +24,16 @@ bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
 
         if (rect.contains(worldPos)) {
             {   
-                if(this->clickState = false)
+                if(this->clickState = true)
                 {   
-                    this->clickState = true;
+                    this->clickState = false;
                     this->buttonShape.setFillColor(sf::Color(211,211,211,32));
                     this->buttonShape.setFillColor(sf::Color::White);
                     return true;
                 }
-                else if(this->clickState = true)
+                else if(this->clickState = false)
                 {
-                    this->clickState = false;
+                    this->clickState = true;
                     this->buttonShape.setFillColor(sf::Color(211,211,211,32));
                     return true;
                 }

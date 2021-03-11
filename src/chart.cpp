@@ -13,10 +13,29 @@ Chart::Chart(std::string path, sf::Color fillColor, sf::Vector2f position, sf::V
 
 bool Chart::isClicked (std::shared_ptr<sf::RenderWindow> window)
 {
-    return false;
+rect = this->chartShape.getGlobalBounds();
+
+    pixelPos = sf::Mouse::getPosition(*window);
+    worldPos = window->mapPixelToCoords(pixelPos);
+
+        if (rect.contains(worldPos)) 
+        {
+            this->Timings.push_back(worldPos.x);
+            std::shared_ptr<sf::RectangleShape> beat = std::make_shared<sf::RectangleShape>();
+            beat->setSize(sf::Vector2f(5.0f, 5.0f));
+            beat->setPosition(worldPos);
+            beat->setFillColor(sf::Color::Green);
+            this->timedBeats.push_back(beat);
+            std::cout<< " chart clicked! " << std::endl;
+            return true;
+        }
+        this->chartShape.setFillColor(sf::Color(211,211,211,32));
+        return false; 
 }
 
 void Chart::draw(std::shared_ptr<sf::RenderWindow> window)
 {
+    for(auto beat : this->timedBeats)
+        window->draw(*beat);
     window->draw(this->chartShape);
 }

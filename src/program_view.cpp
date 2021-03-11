@@ -21,7 +21,7 @@ void Program_View::init()
     horiz_scrollbar = std::make_shared<Horizontal_Scrollbar>("",sf::Color(211,211,211,32), sf::Vector2f(16.0f, WINDOW_SIZE.y-84.0f), sf::Vector2f(WINDOW_SIZE.x - 32.0f, WINDOW_SIZE.y * 0.02f));
     textfield = std::make_shared<Textfield>(sf::Color::White, sf::Vector2f(WINDOW_SIZE.x-128.0f, WINDOW_SIZE.y*0.01), sf::Vector2f(WINDOW_SIZE.x * 0.1f, WINDOW_SIZE.y * 0.05f));
     musicTime = std::make_shared<Play_Time>(this->font, sf::Color::White, sf::Vector2f(0.0f,0.0f), 3);
-    chart = std::make_shared<Chart>("", sf::Color::White, sf::Vector2f(0.0f,0.0f), sf::Vector2f(0.0f,0.0f));
+    chart = std::make_shared<Chart>("", sf::Color(211,211,211,32), sf::Vector2f(0.0f, 45.0f), sf::Vector2f(WINDOW_SIZE.x,WINDOW_SIZE.y - 164.0f));
 
 
     gui_element_list.push_back(chart);
@@ -43,7 +43,7 @@ void Program_View::pollInput()
                 case sf::Event::Closed:
                     this->program_logic->setActiveState(false);
                     break;
-                    
+
                 case sf::Event::Resized:
                     WINDOW_SIZE.x = event.size.width;
                     WINDOW_SIZE.y = event.size.height;
@@ -62,14 +62,34 @@ void Program_View::pollInput()
                         this->music_player->pauseTrack();
                         break;
 
+                    case sf::Keyboard::Up:
+                        this->music_player->increaseVolume();
+                        break;
+
+                    case sf::Keyboard::Down:
+                        this->music_player->decreaseVolume();
+                        break;
+
+                    case sf::Keyboard::Left:
+                        this->music_player->decrementPos();
+                        break;
+
+                    case sf::Keyboard::Right:
+                        this->music_player->incrementPos();
+                        break;
+
+                    case sf::Keyboard::LControl && sf::Keyboard::Z:
+                        this->chart->getTimings().pop_back();
+                        this->chart->getBeats().pop_back();
+                        break;
+
                     case sf::Event::TextEntered:
                         if(this->textfield->getOutlineColor() == sf::Color::Blue)
                         break;
                 }
 
                 case sf::Event::MouseButtonPressed:
-                    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-                        
+                    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))                        
                         for(auto button : gui_element_list)
                             {
                                 if(button->isClicked(this->window))
@@ -86,8 +106,8 @@ void Program_View::pollInput()
                                         this->music_player->stopTrack();
                                     }
                             }
-            }
         }
+    }
 }
 
 
@@ -95,8 +115,6 @@ void Program_View::track_music()
 {
     this->horiz_scrollbar->autoScroll(this->window, this->music_player);
     this->musicTime->setText(this->music_player->playTimeText());
-    this->horiz_scrollbar->scrub(this->window, this->music_player);
-
 }
 
 void Program_View::draw()

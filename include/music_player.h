@@ -1,7 +1,7 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
 
-#include <SFML/Audio.hpp>
+#include <SFML/Audio.hpp> //SFML only handles OGG, WAV, VORBIS, and FLAC file extensions
 #include <memory>
 #include <string>
 #include <iostream>
@@ -32,8 +32,9 @@ public:
     void playTrack();
     void stopTrack() { this->music.stop(); this->isPlaying = false; }
     void pauseTrack() { this->music.pause(); this->isPlaying = false;}
-
     void changeTrack(std::string path);
+
+    float getDuration() { return duration; }
 
     bool getPlaying() { return this->isPlaying; }
     void setPlaying(bool p){ this->isPlaying = p; }

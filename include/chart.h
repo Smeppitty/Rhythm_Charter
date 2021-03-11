@@ -18,7 +18,7 @@ private:
     sf::Vector2f worldPos;
     sf::FloatRect rect;
 
-    std::vector<std::vector<std::shared_ptr<sf::RectangleShape>>> squareGrid;
+    // std::vector<std::vector<std::shared_ptr<sf::RectangleShape>>> squareGrid;
     std::vector<float> Timings;
     std::vector<std::shared_ptr<sf::RectangleShape>> timedBeats;
 

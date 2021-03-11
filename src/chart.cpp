@@ -31,7 +31,7 @@ rect = this->chartShape.getGlobalBounds();
             this->Timings.push_back(worldPos.x);
             std::shared_ptr<sf::RectangleShape> beat = std::make_shared<sf::RectangleShape>();
             beat->setSize(sf::Vector2f(5.0f, 5.0f));
-            beat->setPosition();
+            // beat->setPosition();
             beat->setFillColor(sf::Color::Green);
             this->timedBeats.push_back(beat);
 

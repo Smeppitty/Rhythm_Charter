@@ -29,10 +29,9 @@ bool Horizontal_Scrollbar::isClicked(std::shared_ptr<sf::RenderWindow> window)
     return false;
 }
 
-
-void Horizontal_Scrollbar::scroll(std::shared_ptr<sf::RenderWindow> window)
+void Horizontal_Scrollbar::autoScroll(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player)
 {
-
+    this->thumb.setPosition(this->horizShape.getSize().x * music_player->getRatio() + this->thumb.getRadius(), this->thumb.getPosition().y);
 }
 
 

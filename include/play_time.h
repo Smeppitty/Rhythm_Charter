@@ -12,6 +12,8 @@ public:
     
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
     void draw(std::shared_ptr<sf::RenderWindow> window);
+
+    void setText(std::string text);
     
 };
 #endif

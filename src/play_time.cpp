@@ -16,3 +16,8 @@ void Play_Time::draw(std::shared_ptr<sf::RenderWindow> window)
 {
     window->draw(this->text);
 }
+
+void Play_Time::setText(std::string text)
+{
+    this->text.setString(text);
+}

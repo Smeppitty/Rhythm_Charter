@@ -15,6 +15,7 @@ public:
 
     bool getActiveState() { return activeState; }
     void setActiveState(bool b) { activeState = b; }
+    
 
     sf::Vector2f getDefaultWindowSize() { return DEFAULT_WINDOW_SIZE; }
 };

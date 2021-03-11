@@ -9,24 +9,25 @@ Textfield::Textfield(sf::Color fillColor, sf::Vector2f position, sf::Vector2f di
     this->txtFieldShape.setPosition(position);
     this->txtFieldShape.setSize(dimensions);
     this->txtFieldShape.setFillColor(fillColor);
+    this->txtFieldShape.setOutlineThickness(3.0f);
+    this->txtFieldShape.setOutlineColor(sf::Color::Transparent);
 }
 
 bool Textfield::isClicked(std::shared_ptr<sf::RenderWindow> window)
 {
-    sf::FloatRect rect = this->txtFieldShape.getGlobalBounds();
+    rect = this->txtFieldShape.getGlobalBounds();
 
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(*window);
-    sf::Vector2f worldPos = window->mapPixelToCoords(pixelPos);
+    pixelPos = sf::Mouse::getPosition(*window);
+    worldPos = window->mapPixelToCoords(pixelPos);
 
-        if (rect.contains(worldPos)) {
+        if (rect.contains(worldPos)) 
             {   
-                this->txtFieldShape.setOutlineColor(sf::Color(211,211,211,32));
+                this->txtFieldShape.setOutlineColor(sf::Color::Blue);
                 return true;
             }
-        }
+        this->txtFieldShape.setOutlineColor(sf::Color::Transparent);
         return false; 
 }
-
 void Textfield::draw(std::shared_ptr<sf::RenderWindow> window)
 {
     window->draw(txtFieldShape);

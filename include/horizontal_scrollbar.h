@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "gui_element.h"
+#include "music_player.h"
 
 class Horizontal_Scrollbar : public GUI_Element 
 {
@@ -20,10 +21,11 @@ private:
 
 public:
     Horizontal_Scrollbar(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);    
-    void draw(std::shared_ptr<sf::RenderWindow> window);
 
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
-    void scroll(std::shared_ptr<sf::RenderWindow> window);
+    void draw(std::shared_ptr<sf::RenderWindow> window);
+
+    void autoScroll(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player);
 };
 
 #endif

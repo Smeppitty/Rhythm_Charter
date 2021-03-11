@@ -18,5 +18,5 @@ bool Chart::isClicked (std::shared_ptr<sf::RenderWindow> window)
 
 void Chart::draw(std::shared_ptr<sf::RenderWindow> window)
 {
-
+    window->draw(this->chartShape);
 }

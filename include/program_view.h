@@ -39,6 +39,9 @@ private:
     sf::Vector2i pixelPos;
     sf::Vector2f worldPos;
 
+    sf::Vector2i startingPos;
+    sf::Vector2f currentPos;
+
 public:
     Program_View(std::shared_ptr<Program_Logic> program_logic);
 

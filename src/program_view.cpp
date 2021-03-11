@@ -21,7 +21,7 @@ void Program_View::init()
     horiz_scrollbar = std::make_shared<Horizontal_Scrollbar>("",sf::Color(211,211,211,32), sf::Vector2f(16.0f, WINDOW_SIZE.y-84.0f), sf::Vector2f(WINDOW_SIZE.x - 32.0f, WINDOW_SIZE.y * 0.02f));
     textfield = std::make_shared<Textfield>(sf::Color::White, sf::Vector2f(WINDOW_SIZE.x-128.0f, WINDOW_SIZE.y*0.01), sf::Vector2f(WINDOW_SIZE.x * 0.1f, WINDOW_SIZE.y * 0.05f));
     musicTime = std::make_shared<Play_Time>(this->font, sf::Color::White, sf::Vector2f(0.0f,0.0f), 3);
-    chart = std::make_shared<Chart>("", sf::Color(211,211,211,32), sf::Vector2f(0.0f, 45.0f), sf::Vector2f(WINDOW_SIZE.x,WINDOW_SIZE.y - 164.0f));
+    chart = std::make_shared<Chart>(this->music_player, "", sf::Color(211,211,211,32), sf::Vector2f(0.0f, 45.0f), sf::Vector2f(WINDOW_SIZE.x,WINDOW_SIZE.y - 164.0f));
 
 
     gui_element_list.push_back(chart);

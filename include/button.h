@@ -16,6 +16,13 @@ private:
     sf::Color fillColor;
     sf::Vector2f dimensions;
 
+    sf::FloatRect rect;
+
+    sf::Vector2i pixelPos;
+    sf::Vector2f worldPos;
+
+    bool clickState = false;
+
 public:
     Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions); 
 

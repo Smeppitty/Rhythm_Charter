@@ -5,7 +5,7 @@ Program_View::Program_View(std::shared_ptr<Program_Logic> program_logic)
 {
     this->program_logic = program_logic;
     this->WINDOW_SIZE = this->program_logic->getDefaultWindowSize();
-    this->window = std::make_shared<sf::RenderWindow>(sf::VideoMode(WINDOW_SIZE.x,WINDOW_SIZE.y,32), "XML Charter", sf::Style::Resize || sf::Style::Close);
+    this->window = std::make_shared<sf::RenderWindow>(sf::VideoMode(WINDOW_SIZE.x,WINDOW_SIZE.y,32), "XML Charter", sf::Style::Default);
     this->init();
 }
 
@@ -13,7 +13,6 @@ void Program_View::init()
 {   
     this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
     // this->music_player = std::make_shared<Music_Player>("../data/music/Death Grips - Exmilitary - 3 - Spread Eagle Cross the Block.wav");
-
 
     this->font.loadFromFile("../data/fonts/orange kid.ttf");
 
@@ -23,6 +22,7 @@ void Program_View::init()
     textfield = std::make_shared<Textfield>(sf::Color::White, sf::Vector2f(WINDOW_SIZE.x-128.0f, WINDOW_SIZE.y*0.01), sf::Vector2f(WINDOW_SIZE.x * 0.1f, WINDOW_SIZE.y * 0.05f));
     musicTime = std::make_shared<Play_Time>(this->font, sf::Color::White, sf::Vector2f(0.0f,0.0f), 3);
     chart = std::make_shared<Chart>("", sf::Color::White, sf::Vector2f(0.0f,0.0f), sf::Vector2f(0.0f,0.0f));
+
 
     gui_element_list.push_back(chart);
     // gui_element_list.push_back(musicTime);
@@ -43,6 +43,7 @@ void Program_View::pollInput()
                 case sf::Event::Closed:
                     this->program_logic->setActiveState(false);
                     break;
+                    
                 case sf::Event::Resized:
                     WINDOW_SIZE.x = event.size.width;
                     WINDOW_SIZE.y = event.size.height;
@@ -80,19 +81,22 @@ void Program_View::pollInput()
                                             this->music_player->playTrack();
                                     }
 
-                                    else if((button == this->stop_button))
+                                    else if(button == this->stop_button)
                                     {
                                         this->music_player->stopTrack();
                                     }
                             }
+            }
         }
-    }
 }
+
 
 void Program_View::track_music()
 {
     this->horiz_scrollbar->autoScroll(this->window, this->music_player);
     this->musicTime->setText(this->music_player->playTimeText());
+    this->horiz_scrollbar->scrub(this->window, this->music_player);
+
 }
 
 void Program_View::draw()

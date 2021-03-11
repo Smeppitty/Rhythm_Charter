@@ -23,9 +23,11 @@ bool Textfield::isClicked(std::shared_ptr<sf::RenderWindow> window)
         if (rect.contains(worldPos)) 
             {   
                 this->txtFieldShape.setOutlineColor(sf::Color::Blue);
+                isInside = true;
                 return true;
             }
         this->txtFieldShape.setOutlineColor(sf::Color::Transparent);
+        isInside = false;
         return false; 
 }
 void Textfield::draw(std::shared_ptr<sf::RenderWindow> window)

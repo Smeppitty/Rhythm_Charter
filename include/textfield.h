@@ -16,6 +16,8 @@ private:
     sf::Vector2i pixelPos;
     sf::Vector2f worldPos;
     sf::FloatRect rect;
+
+    bool isInside = false;
     
 public:
     Textfield(sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);

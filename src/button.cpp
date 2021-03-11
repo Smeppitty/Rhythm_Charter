@@ -17,15 +17,26 @@ Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf:
 }
 bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
 {
-    sf::FloatRect rect = this->buttonShape.getGlobalBounds();
+    rect = this->buttonShape.getGlobalBounds();
 
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(*window);
-    sf::Vector2f worldPos = window->mapPixelToCoords(pixelPos);
+    pixelPos = sf::Mouse::getPosition(*window);
+    worldPos = window->mapPixelToCoords(pixelPos);
 
         if (rect.contains(worldPos)) {
             {   
-                this->buttonShape.setFillColor(sf::Color(211,211,211,32));
-                return true;
+                if(this->clickState = false)
+                {   
+                    this->clickState = true;
+                    this->buttonShape.setFillColor(sf::Color(211,211,211,32));
+                    this->buttonShape.setFillColor(sf::Color::White);
+                    return true;
+                }
+                else if(this->clickState = true)
+                {
+                    this->clickState = false;
+                    this->buttonShape.setFillColor(sf::Color(211,211,211,32));
+                    return true;
+                }
             }
         }
         return false; 

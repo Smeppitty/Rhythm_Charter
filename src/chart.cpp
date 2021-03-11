@@ -9,6 +9,12 @@ Chart::Chart(std::string path, sf::Color fillColor, sf::Vector2f position, sf::V
         this->chartShape.setFillColor(fillColor);
     else
         this->chartShape.setTexture(&chartTex);      
+
+    // //create a grid
+    // for(auto list : this->squareGrid)
+
+    //     for(auto elements : list)
+
 }
 
 bool Chart::isClicked (std::shared_ptr<sf::RenderWindow> window)
@@ -20,16 +26,18 @@ rect = this->chartShape.getGlobalBounds();
 
         if (rect.contains(worldPos)) 
         {
+            
+
             this->Timings.push_back(worldPos.x);
             std::shared_ptr<sf::RectangleShape> beat = std::make_shared<sf::RectangleShape>();
             beat->setSize(sf::Vector2f(5.0f, 5.0f));
-            beat->setPosition(worldPos);
+            beat->setPosition();
             beat->setFillColor(sf::Color::Green);
             this->timedBeats.push_back(beat);
+
             std::cout<< " chart clicked! " << std::endl;
             return true;
         }
-        this->chartShape.setFillColor(sf::Color(211,211,211,32));
         return false; 
 }
 

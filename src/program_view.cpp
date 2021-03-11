@@ -11,8 +11,8 @@ Program_View::Program_View(std::shared_ptr<Program_Logic> program_logic)
 
 void Program_View::init()
 {   
-    this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
-    // this->music_player = std::make_shared<Music_Player>("../data/music/Death Grips - Exmilitary - 3 - Spread Eagle Cross the Block.wav");
+    // this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
+    this->music_player = std::make_shared<Music_Player>("../data/music/Death Grips - Exmilitary - 3 - Spread Eagle Cross the Block.wav");
 
     this->font.loadFromFile("../data/fonts/orange kid.ttf");
 

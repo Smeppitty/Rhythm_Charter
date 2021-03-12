@@ -35,6 +35,9 @@ public:
 
     void scrub(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player);
     void autoScroll(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player);
+
+    sf::Vector2f getThumbPos() { return this->thumbShape.getPosition(); }
+    sf::Vector2f getThumbSize() { return this->thumbShape.getSize(); }
 };
 
 #endif

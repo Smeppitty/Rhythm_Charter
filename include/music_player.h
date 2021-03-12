@@ -39,6 +39,8 @@ public:
     bool getPlaying() { return this->isPlaying; }
     void setPlaying(bool p){ this->isPlaying = p; }
 
+    float getPlayingPos() {return this->music.getPlayingOffset().asSeconds();}
+
     float getRatio();
 
     std::string playTimeText();

@@ -18,9 +18,9 @@ private:
     sf::Vector2f worldPos;
     sf::FloatRect rect;
 
-    std::vector<float> Timings;
-    // std::vector<std::shared_ptr<sf::RectangleShape>> timedBeats;
-    std::vector<std::shared_ptr<sf::RectangleShape>> squareGrid;
+    std::vector<float> beatTimings;
+    std::vector<std::shared_ptr<sf::RectangleShape>> beatSquares;
+    std::vector<std::shared_ptr<sf::RectangleShape>> chartSquares;
 
 
 public:
@@ -28,9 +28,12 @@ public:
 
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
     void draw(std::shared_ptr<sf::RenderWindow> window);
+    
+    void addBeat(std::shared_ptr<sf::RectangleShape> chartBeat, std::shared_ptr<sf::RectangleShape> rect, float timing);
+    void removeBeat();
 
-    std::vector<float> getTimings() { return this->Timings; }
-    std::vector<std::shared_ptr<sf::RectangleShape>> getBeats() { return this->squareGrid; }
+    std::vector<float> getTimings() { return this->beatTimings; }
+    std::vector<std::shared_ptr<sf::RectangleShape>> getBeats() { return this->beatSquares; }
 
 };
 

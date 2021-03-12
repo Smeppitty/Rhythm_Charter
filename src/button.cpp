@@ -9,6 +9,8 @@ Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf:
 
     this->buttonShape.setPosition(position);
     this->buttonShape.setSize(dimensions);
+    this->buttonShape.setOutlineColor(sf::Color::Transparent);
+    this->buttonShape.setOutlineThickness(15);
 
     if(!this->buttonTex.loadFromFile(path))
         this->buttonShape.setFillColor(fillColor);
@@ -27,14 +29,14 @@ bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
                 if(this->clickState = true)
                 {   
                     this->clickState = false;
-                    this->buttonShape.setFillColor(sf::Color(211,211,211,32));
-                    this->buttonShape.setFillColor(sf::Color::White);
+                    this->buttonShape.setOutlineColor(sf::Color::Transparent);
                     return true;
                 }
                 else if(this->clickState = false)
                 {
                     this->clickState = true;
-                    this->buttonShape.setFillColor(sf::Color(211,211,211,32));
+                    this->buttonShape.setOutlineColor(sf::Color(246,171,252));
+
                     return true;
                 }
             }

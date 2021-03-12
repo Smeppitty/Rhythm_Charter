@@ -25,6 +25,7 @@ private:
 
     std::shared_ptr<Button> play_button;
     std::shared_ptr<Button> stop_button;
+    std::shared_ptr<Button> chart_button;
     std::shared_ptr<Horizontal_Scrollbar> horiz_scrollbar;
     std::shared_ptr<Textfield> textfield;
     std::shared_ptr<Play_Time> musicTime;
@@ -47,6 +48,7 @@ public:
     void init();
     void pollInput();
     void draw();
+    void chart_music();
     void track_music();
     void update(const float& dt);
 };

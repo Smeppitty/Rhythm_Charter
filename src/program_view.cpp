@@ -12,26 +12,29 @@ Program_View::Program_View(std::shared_ptr<Program_Logic> program_logic)
 void Program_View::init()
 {   
     this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
+    // this->music_player = std::make_shared<Music_Player>(or a list of strings);
+
     // this->music_player = std::make_shared<Music_Player>("../data/music/Death Grips - Exmilitary - 3 - Spread Eagle Cross the Block.wav");
 
     this->font.loadFromFile("../data/fonts/orange kid.ttf");
 
+    chart = std::make_shared<Chart>(this->music_player, "", sf::Color(211,211,211,32), sf::Vector2f(0.0f, 45.0f), sf::Vector2f(WINDOW_SIZE.x,WINDOW_SIZE.y - 164.0f));
+    horiz_scrollbar = std::make_shared<Horizontal_Scrollbar>("",sf::Color(211,211,211,32), sf::Vector2f(16.0f, WINDOW_SIZE.y-84.0f), sf::Vector2f(WINDOW_SIZE.x - 32.0f, WINDOW_SIZE.y * 0.02f));
+    musicTime = std::make_shared<Play_Time>(this->font, sf::Color::White, sf::Vector2f(0.0f,0.0f), 3, this->music_player);
+    textfield = std::make_shared<Textfield>(sf::Color::White, sf::Vector2f(WINDOW_SIZE.x-128.0f, WINDOW_SIZE.y*0.01), sf::Vector2f(WINDOW_SIZE.x * 0.1f, WINDOW_SIZE.y * 0.05f));
+ 
     play_button = std::make_shared<Button>("",sf::Color::White, sf::Vector2f(WINDOW_SIZE.x/2.0f, WINDOW_SIZE.y-64.0f), sf::Vector2f(32.0f, 32.0f));
     stop_button = std::make_shared<Button>("",sf::Color::White, sf::Vector2f(WINDOW_SIZE.x/2.0f - 64.0f, WINDOW_SIZE.y-64.0f), sf::Vector2f(32.0f, 32.0f));
     chart_button = std::make_shared<Button>("",sf::Color::White, sf::Vector2f(WINDOW_SIZE.x/2.0f + 64.0f, WINDOW_SIZE.y-64.0f), sf::Vector2f(32.0f, 32.0f));
-    horiz_scrollbar = std::make_shared<Horizontal_Scrollbar>("",sf::Color(211,211,211,32), sf::Vector2f(16.0f, WINDOW_SIZE.y-84.0f), sf::Vector2f(WINDOW_SIZE.x - 32.0f, WINDOW_SIZE.y * 0.02f));
-    textfield = std::make_shared<Textfield>(sf::Color::White, sf::Vector2f(WINDOW_SIZE.x-128.0f, WINDOW_SIZE.y*0.01), sf::Vector2f(WINDOW_SIZE.x * 0.1f, WINDOW_SIZE.y * 0.05f));
-    musicTime = std::make_shared<Play_Time>(this->font, sf::Color::White, sf::Vector2f(0.0f,0.0f), 3);
-    chart = std::make_shared<Chart>(this->music_player, "", sf::Color(211,211,211,32), sf::Vector2f(0.0f, 45.0f), sf::Vector2f(WINDOW_SIZE.x,WINDOW_SIZE.y - 164.0f));
 
-
-    // gui_element_list.push_back(musicTime);
+    gui_element_list.push_back(chart);
+    gui_element_list.push_back(horiz_scrollbar);
     gui_element_list.push_back(textfield);
+
+    gui_element_list.push_back(musicTime); 
     gui_element_list.push_back(play_button);
     gui_element_list.push_back(stop_button);
     gui_element_list.push_back(chart_button);
-    gui_element_list.push_back(horiz_scrollbar);
-    gui_element_list.push_back(chart);
 
 }
 
@@ -110,6 +113,17 @@ void Program_View::pollInput()
                                     
                                     else if(button == this->chart_button)
                                         this->chart_music();
+
+                                    else if(button == this->chart)
+                                        {
+                                            pixelPos = sf::Mouse::getPosition(*this->window);
+                                            worldPos = this->window->mapPixelToCoords(pixelPos);
+                                        for (auto beatSquare : this->chart->getBeats())
+                                            {
+                                                
+                                            // this->chart->removeBeat();
+                                            }
+                                        }
                             }
         }
     }
@@ -135,7 +149,7 @@ void Program_View::chart_music() //make a square and put it on the scrollbar, ad
 void Program_View::track_music()
 {
     this->horiz_scrollbar->autoScroll(this->window, this->music_player);
-    this->musicTime->setText(this->music_player->playTimeText());
+    this->musicTime->updateText();
 }
 
 void Program_View::draw()
@@ -151,6 +165,6 @@ void Program_View::draw()
 void Program_View::update(const float& dt)
 {
     track_music();
-    draw();
     pollInput();
+    draw();
 }

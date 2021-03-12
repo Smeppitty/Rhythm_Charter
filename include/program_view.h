@@ -23,13 +23,13 @@ private:
 
     sf::Font font;
 
+    std::shared_ptr<Chart> chart;
     std::shared_ptr<Button> play_button;
     std::shared_ptr<Button> stop_button;
     std::shared_ptr<Button> chart_button;
     std::shared_ptr<Horizontal_Scrollbar> horiz_scrollbar;
     std::shared_ptr<Textfield> textfield;
     std::shared_ptr<Play_Time> musicTime;
-    std::shared_ptr<Chart> chart;
 
     std::shared_ptr<sf::Music> music;
     std::shared_ptr<Music_Player> music_player;

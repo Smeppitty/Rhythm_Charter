@@ -5,6 +5,12 @@ Music_Player::Music_Player(std::string path)
     this->music.openFromFile(path);
 }
 
+Music_Player::Music_Player(std::vector<std::string> fileList)
+{
+    
+}
+
+
 void Music_Player::playTrack()
 {
     this->music.setVolume(50);

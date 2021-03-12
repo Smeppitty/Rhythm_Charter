@@ -2,44 +2,17 @@
 
 Chart::Chart(std::shared_ptr<Music_Player> music_player, std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) : GUI_Element(position)
 {
-    // this->chartShape.setPosition(position);
-    // this->chartShape.setSize(dimensions);
-
-    // if(!this->chartTex.loadFromFile(path))
-    //     this->chartShape.setFillColor(fillColor);
-    // else
-    //     this->chartShape.setTexture(&chartTex);      
-
-    // int counter = music_player->getDuration()/60;
-    // bool checkerCheck = false;
-
-    //create a grid
-    // for(int i = 1; i < 5; i++)
-    //     for(int j = 0; j < dimensions.x; j+=counter)
-    //         {
-    //             std::shared_ptr<sf::RectangleShape> beat = std::make_shared<sf::RectangleShape>();
-    //             beat->setSize(sf::Vector2f(60.0f, 60.0f));
-    //             beat->setOrigin(sf::Vector2f(30.0f, 30.0f));
-    //             beat->setPosition(sf::Vector2f(j, dimensions.y/5));
-    //             if(checkerCheck)
-    //             {
-    //                 beat->setFillColor(sf::Color(211,211,211,32));
-    //             }
-    //             if(!checkerCheck)
-    //             {
-    //                 beat->setFillColor(sf::Color::White);
-    //             }
-    //             this->squareGrid.push_back(beat);
-    //         }
-
-    // for(auto list : this->squareGrid)
-    //     for(auto elements : list)
-
+    
 }
 
 bool Chart::isClicked (std::shared_ptr<sf::RenderWindow> window)
 {
 
+    //check for a square in chartSquares
+
+    //add an outline around it
+    //make certain inputs the user can do to delete or drag a square to
+    return true;
 }
 
 void Chart::addBeat(std::shared_ptr<sf::RectangleShape> chartBeat, std::shared_ptr<sf::RectangleShape> rect, float timing)
@@ -49,9 +22,15 @@ void Chart::addBeat(std::shared_ptr<sf::RectangleShape> chartBeat, std::shared_p
     this->beatTimings.push_back(timing); 
 }
 
-void Chart::removeBeat()
+void Chart::removeBeat(int x)
 {
+    std::vector<float>::iterator iter = this->beatTimings.begin() + (x-1);
+    std::vector<std::shared_ptr<sf::RectangleShape>>::iterator beatIter1 = this->beatSquares.begin() + (x-1);
+    std::vector<std::shared_ptr<sf::RectangleShape>>::iterator beatIter2 = this->chartSquares.begin() + (x-1);
 
+    this->beatTimings.erase(iter);
+    this->beatSquares.erase(beatIter1);
+    this->chartSquares.erase(beatIter2);
 }
 
 

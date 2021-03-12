@@ -41,22 +41,22 @@ bool Horizontal_Scrollbar::isClicked(std::shared_ptr<sf::RenderWindow> window)
 }
 
 
-void Horizontal_Scrollbar::scrub(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player)
-{
-    sf::Event event;
-    if( event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left )
-            {
-                startingPos.x = event.mouseButton.x;
-                startingPos.y = event.mouseButton.y;
-            }
+// void Horizontal_Scrollbar::scrub(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player)
+// {
+//     sf::Event event;
+//     if( event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left )
+//             {
+//                 startingPos.x = event.mouseButton.x;
+//                 startingPos.y = event.mouseButton.y;
+//             }
 
-            if( event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) )
-            {
-                this->currentPos.x = event.mouseMove.x - startingPos.x;
-                this->currentPos.y = event.mouseMove.y - startingPos.y;
-                this->thumbShape.setPosition( startingPos.x , startingPos.y );
-            }
-}
+//             if( event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) )
+//             {
+//                 this->currentPos.x = event.mouseMove.x - startingPos.x;
+//                 this->currentPos.y = event.mouseMove.y - startingPos.y;
+//                 this->thumbShape.setPosition( startingPos.x , startingPos.y );
+//             }
+// }
 
 
 void Horizontal_Scrollbar::autoScroll(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player)

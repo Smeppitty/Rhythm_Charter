@@ -20,6 +20,7 @@ private:
 
 public:
     Music_Player(std::string path);
+    Music_Player(std::vector<std::string> fileList);
 
     void increaseVolume() { this->music.setVolume( this->music.getVolume() + 5 ); }
     void decreaseVolume() { this->music.setVolume( this->music.getVolume() - 5 ); }

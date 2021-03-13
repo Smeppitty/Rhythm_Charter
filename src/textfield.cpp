@@ -1,6 +1,6 @@
 #include "textfield.h"
 
-Textfield::Textfield(sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) : GUI_Element(position)
+Textfield::Textfield(sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) : GUI_Element()
 {
     this->position = position;
     this->fillColor = fillColor;

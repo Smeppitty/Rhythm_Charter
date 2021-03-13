@@ -7,9 +7,8 @@
 class GUI_Element : std::enable_shared_from_this<GUI_Element> 
 {
 private:
-    sf::Vector2f position;
 public:
-    GUI_Element(sf::Vector2f position);
+    GUI_Element();
 
     virtual void draw(std::shared_ptr<sf::RenderWindow> window) = 0;
     virtual bool isClicked (std::shared_ptr<sf::RenderWindow> window) = 0;

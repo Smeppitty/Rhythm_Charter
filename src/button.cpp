@@ -1,6 +1,6 @@
 #include "button.h"
 
-Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) :GUI_Element(position)
+Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) :GUI_Element()
 {   
     this->position = position;
     this->path = path;
@@ -36,7 +36,6 @@ bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
                 {
                     this->clickState = true;
                     this->buttonShape.setOutlineColor(sf::Color(246,171,252));
-
                     return true;
                 }
             }

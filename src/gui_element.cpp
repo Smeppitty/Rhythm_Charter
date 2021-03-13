@@ -1,6 +1,5 @@
 #include "gui_element.h"
 
-GUI_Element::GUI_Element(sf::Vector2f position)
+GUI_Element::GUI_Element()
 {
-    this->position = position;
 }

@@ -11,6 +11,9 @@ private:
     std::string playTimeText;
     std::shared_ptr<Music_Player> mp;
 
+    int now;
+    int duration;
+
 public:
     Play_Time(sf::Font font, sf::Color fontColor, sf::Vector2f position, int charSize, std::shared_ptr<Music_Player> mp);
     

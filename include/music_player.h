@@ -10,8 +10,8 @@ class Music_Player
 {
 private:
     sf::Music music;
-
     std::string playText;
+
     float currentPos;
     float duration;
     float ratio;

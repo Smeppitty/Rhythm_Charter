@@ -3,6 +3,7 @@
 
 #include "gui_element.h"
 #include "music_player.h"
+#include "beat.h"
 
 class Chart : public GUI_Element
 {
@@ -18,21 +19,23 @@ private:
     sf::Vector2f worldPos;
     sf::FloatRect rect;
 
-    std::vector<float> beatTimings;
-    std::vector<std::shared_ptr<sf::RectangleShape>> beatSquares;
-    std::vector<std::shared_ptr<sf::RectangleShape>> chartSquares;
+    std::vector<std::shared_ptr<Beat>> beatList;
+    std::vector<std::shared_ptr<Beat>> greenList;
+
+    // std::vector<float> beatTimings;
+    // std::vector<std::shared_ptr<sf::RectangleShape>> beatSquares;
+    // std::vector<std::shared_ptr<sf::RectangleShape>> chartSquares;
 
 public:
-    Chart(std::shared_ptr<Music_Player> music_player, std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);
+    Chart();
 
     bool isClicked(std::shared_ptr<sf::RenderWindow> window);
     void draw(std::shared_ptr<sf::RenderWindow> window);
     
-    void addBeat(std::shared_ptr<sf::RectangleShape> chartBeat, std::shared_ptr<sf::RectangleShape> rect, float timing);
+    void addBeat(float timing, std::shared_ptr<sf::RectangleShape> rect, std::shared_ptr<sf::RectangleShape> chartBeat);
     void removeBeat(int x);
 
-    std::vector<float> getTimings() { return this->beatTimings; }
-    std::vector<std::shared_ptr<sf::RectangleShape>> getBeats() { return this->beatSquares; }
+    std::vector<std::shared_ptr<Beat>> getBeatList() { return this->beatList; }
 
 };
 

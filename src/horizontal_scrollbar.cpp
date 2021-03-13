@@ -1,6 +1,6 @@
 #include "horizontal_scrollbar.h"
 
-Horizontal_Scrollbar::Horizontal_Scrollbar(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) : GUI_Element(position)
+Horizontal_Scrollbar::Horizontal_Scrollbar(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) : GUI_Element()
 {
     this->position = position;
     this->path = path;
@@ -34,9 +34,11 @@ bool Horizontal_Scrollbar::isClicked(std::shared_ptr<sf::RenderWindow> window)
         if (rect.contains(worldPos)) 
             {   
                 // this->thumbShape.setOutlineColor(sf::Color::Blue);
+                //
                 return true;
             }
         // this->thumbShape.setOutlineColor(sf::Color::Transparent);
+        //
         return false; 
 }
 

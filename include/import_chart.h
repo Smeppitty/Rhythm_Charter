@@ -1,10 +1,16 @@
 #ifndef IMPORT_CHART_H
 #define IMPORT_CHART_H
 
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <json/json.h>
+
+
 class Import_Chart
 {
 private:
-    /* data */
+    
 public:
     Import_Chart(/* args */);
 };

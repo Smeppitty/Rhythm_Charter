@@ -45,7 +45,20 @@ file(GLOB EXECLIST bin/*cpp)
 #  include_directories(${Boost_INCLUDE_DIRS})   #
 #  link_libraries(${Boost_LIBRARIES})           #
 #################################################
+       
+# ################
+# # Find Jsoncpp #
+# ################
 
+#  find_package(PkgConfig REQUIRED)
+#  pkg_check_modules(JSONCPP jsoncpp)         
+#  include_directories(${jsoncpp_INCLUDE_DIRS})   
+#  link_libraries(${jsoncpp_LIBRARIES})           
+
+#  if(NOT Jsoncpp_FOUND)
+#   # JSONCPP not found
+#   message(FATAL_ERROR " * Make sure LIB includes the directory where the JSONCPP libraries are installed.\n * Make sure INCLUDE includes the directory where the JSONCPP header files are installed.")	
+# endif()
 
 
 #############

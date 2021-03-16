@@ -10,7 +10,7 @@
 #########################################
 
 # Project name
-project(csci437)
+project(rhythm_charter)
 
 # Minimum Cmake Version
 cmake_minimum_required(VERSION 2.6)
@@ -19,7 +19,7 @@ cmake_minimum_required(VERSION 2.6)
 # Setup Environment #
 #####################
 # set to include custom modules
-set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH} ${csci437_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH} ${rhythm_charter_SOURCE_DIR}/cmake)
 
 # set build type if specified by environment
 if((NOT CMAKE_BUILD_TYPE) AND (NOT $ENV{CMAKE_BUILD_TYPE} STREQUAL ""))
@@ -27,7 +27,7 @@ if((NOT CMAKE_BUILD_TYPE) AND (NOT $ENV{CMAKE_BUILD_TYPE} STREQUAL ""))
 endif()
 
 # Set include directories
-include_directories(${csci437_SOURCE_DIR}/include)
+include_directories(${rhythm_charter_SOURCE_DIR}/include)
 
 # Get CPP files
 file(GLOB SRC src/*cpp)
@@ -46,16 +46,22 @@ file(GLOB EXECLIST bin/*cpp)
 #  link_libraries(${Boost_LIBRARIES})           #
 #################################################
        
-# ################
-# # Find Jsoncpp #
-# ################
+# # ################
+# # # Find Json.h #
+# # ################
 
-#  find_package(PkgConfig REQUIRED)
-#  pkg_check_modules(JSONCPP jsoncpp)         
-#  include_directories(${jsoncpp_INCLUDE_DIRS})   
-#  link_libraries(${jsoncpp_LIBRARIES})           
+# find_package(nlohmann_json 3.2.0 REQUIRED)
+# ...
+# add_library(foo ...)
+# ...
+# target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
 
-#  if(NOT Jsoncpp_FOUND)
+# #  find_package(PkgConfig REQUIRED)
+# #  pkg_check_modules(JSONCPP jsoncpp)         
+#  include_directories(${JSONCPP_INCLUDE_DIRS})   
+#  target_link_libraries(${rhythm_charter} jsoncpp_lib})           
+
+#  if(NOT JSONCPP_FOUND)
 #   # JSONCPP not found
 #   message(FATAL_ERROR " * Make sure LIB includes the directory where the JSONCPP libraries are installed.\n * Make sure INCLUDE includes the directory where the JSONCPP header files are installed.")	
 # endif()
@@ -88,11 +94,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 if(CMAKE_BUILD_TYPE)
   string(TOUPPER "${CMAKE_BUILD_TYPE}" TYPE)
   message("-- Using user specified build type: ${TYPE}")
-elseif(${csci437_SOURCE_DIR} STREQUAL ${csci437_BINARY_DIR})
+elseif(${rhythm_charter_SOURCE_DIR} STREQUAL ${rhythm_charter_BINARY_DIR})
   set(CMAKE_BUILD_TYPE Debug)
   message("-- In-source building. Build type set to: Debug")
 else()
-  get_filename_component(TYPE ${csci437_BINARY_DIR} NAME)
+  get_filename_component(TYPE ${rhythm_charter_BINARY_DIR} NAME)
   string(TOUPPER "${TYPE}" TYPE)
   if(${TYPE} STREQUAL "RELEASE")
     set(CMAKE_BUILD_TYPE Release)
@@ -116,7 +122,7 @@ endif()
 #######################
 # src library (all CPP files in 'src' dir)
 if(NOT SRC STREQUAL "")
-  get_filename_component(LIBNAME ${csci437_SOURCE_DIR} NAME)
+  get_filename_component(LIBNAME ${rhythm_charter_SOURCE_DIR} NAME)
   set(LIBNAME "${LIBNAME}_core")
   add_library(${LIBNAME} ${SRC})
 endif()

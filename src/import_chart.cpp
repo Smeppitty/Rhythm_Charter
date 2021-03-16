@@ -3,32 +3,27 @@
 
 Import_Chart::Import_Chart(/* args */)
 {
+// // create an empty structure (null)
+// json j;
 
-Json::Value root;   // starts as "null"; will contain the root value after parsing
-std::cin >> root;
+// // add a number that is stored as double (note the implicit conversion of j to an object)
+// j["pi"] = 3.141;
 
-// Get the value of the member of root named 'my-encoding', return 'UTF-32' if there is no
-// such member.
-std::string my_encoding = root.get("my-encoding", "UTF-32" ).asString();
+// // add a Boolean that is stored as bool
+// j["happy"] = true;
 
-// Get the value of the member of root named 'my-plug-ins'; return a 'null' value if
-// there is no such member.
-const Json::Value my_chart = root["chartInformation"];
-// for ( int index = 0; index < my_plugins.size(); ++index )  // Iterates over the sequence elements.
-//    yourlib::loadPlugIn( my_plugins[index].asString() );
+// // add a string that is stored as std::string
+// j["name"] = "Niels";
 
-// yourlib::setIndentLength( root["my-indent"].get("length", 3).asInt() );
-// yourlib::setIndentUseSpace( root["my-indent"].get("use_space", true).asBool() );
+// // add another null object by passing nullptr
+// j["nothing"] = nullptr;
 
-// ...
-// At application shutdown to make the new configuration document:
-// Since Json::Value has implicit constructor for all value types, it is not
-// necessary to explicitly construct the Json::Value object:
-// root["encoding"] = yourlib::getCurrentEncoding();
-// root["indent"]["length"] = yourlib::getCurrentIndentLength();
-// root["indent"]["use_space"] = yourlib::getCurrentIndentUseSpace();
+// // add an object inside the object
+// j["answer"]["everything"] = 42;
 
-// Make a new JSON document with the new configuration. Preserve original comments.
-std::cout << root << "\n";
+// // add an array that is stored as std::vector (using an initializer list)
+// j["list"] = { 1, 0, 2 };
 
-} 
+// // add another object (using an initializer list of pairs)
+// j["object"] = { {"currency", "USD"}, {"value", 42.99} };
+// } 

@@ -13,7 +13,8 @@ void Program_View::init()
 {   
     // this->music_player = std::make_shared<Music_Player>(or a list of strings);
 
-    this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
+    // this->music_player = std::make_shared<Music_Player>("../data/music/Milf_Inst.ogg");
+    this->music_player = std::make_shared<Music_Player>("../data/music/Philly Nice - Friday Night Funkin' OST-HQ.ogg");
     // this->music_player = std::make_shared<Music_Player>("../data/music/Death Grips - Exmilitary - 3 - Spread Eagle Cross the Block.wav");
 
     this->font.loadFromFile("../data/fonts/orange kid.ttf");

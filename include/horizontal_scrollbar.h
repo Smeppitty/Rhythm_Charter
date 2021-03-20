@@ -1,43 +1,26 @@
 #ifndef HORIZONTAL_SCROLLBAR_H
 #define HORIZONTAL_SCROLLBAR_H
 
-#include <SFML/Graphics.hpp>
-#include <memory>
 #include "gui_element.h"
 #include "music_player.h"
 
-class Horizontal_Scrollbar : public GUI_Element 
+class Horizontal_Scrollbar : public GUI_Element
 {
 private:
-    sf::Vector2f position;
-    sf::RectangleShape horizShape;
-    sf::Texture horizTex;
-
-    std::string path;
-    sf::Color fillColor;
-    sf::Vector2f dimensions;
-
-    sf::RectangleShape thumbShape;    
-
-    sf::FloatRect rect;
+    sf::RectangleShape bar;
+    sf::RectangleShape slider;
 
     sf::Vector2i pixelPos;
     sf::Vector2f worldPos;
 
-    sf::Vector2i startingPos;
+    sf::Vector2f startPos;
     sf::Vector2f currentPos;
-
+    
 public:
-    Horizontal_Scrollbar(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions);    
-
-    bool isClicked(std::shared_ptr<sf::RenderWindow> window);
-    void draw(std::shared_ptr<sf::RenderWindow> window);
-
-    void scrub(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player);
+    Horizontal_Scrollbar(sf::Vector2f pos, sf::Vector2f dim, std::shared_ptr<sf::RenderWindow> window);
+    void scroll(std::shared_ptr<sf::RenderWindow> window);
     void autoScroll(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Music_Player> music_player);
-
-    sf::Vector2f getThumbPos() { return this->thumbShape.getPosition(); }
-    sf::Vector2f getThumbSize() { return this->thumbShape.getSize(); }
+    void draw(std::shared_ptr<sf::RenderWindow> window);
 };
 
 #endif

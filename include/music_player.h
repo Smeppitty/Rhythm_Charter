@@ -1,49 +1,42 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
 
-#include <SFML/Audio.hpp> //SFML only handles OGG, WAV, VORBIS, and FLAC file extensions
-#include <memory>
+#include <SFML/Audio.hpp>
 #include <string>
-#include <iostream>
+#include <cmath>
 
 class Music_Player
 {
 private:
-    sf::Music music;
-    std::string playText;
+	sf::Music music;
+	std::string path;
+	std::string play_time;
 
-    float currentPos;
-    float duration;
-    float ratio;
+	bool playState = false;
 
-    bool isPlaying = false;
-
+	std::string times[4];
 public:
-    Music_Player(std::string path);
-    Music_Player(std::vector<std::string> fileList);
+	Music_Player(std::string path);
+	
+	void play(){ music.play(); playState = true;}
+	void pause(){ music.pause(); playState = false;}
+	void stop(){ music.stop(); playState = false;}
+	
+	bool isPlaying() { return playState; }
 
-    void increaseVolume() { this->music.setVolume( this->music.getVolume() + 5 ); }
-    void decreaseVolume() { this->music.setVolume( this->music.getVolume() - 5 ); }
+	void increaseVolume(int v) { this->music.setVolume( this->music.getVolume() + v ); }
+	void decreaseVolume(int v) { this->music.setVolume( this->music.getVolume() - v ); }
 
-    void incrementPos() { this->music.setPlayingOffset( this->music.getPlayingOffset() + sf::seconds(5.0f)); }
-    void decrementPos() { this->music.setPlayingOffset( sf::Time(this->music.getPlayingOffset() - sf::seconds(5.0f))); }
+	void incrementPos(float p) { this->music.setPlayingOffset( this->music.getPlayingOffset() + sf::seconds(p)); }
+	void decrementPos(float p) { this->music.setPlayingOffset( sf::Time(this->music.getPlayingOffset() - sf::seconds(p))); }
 
-    void setMusicPos(float pos) { this->music.setPlayingOffset(sf::seconds(pos)); }
+	void updateText();
+	std::string getText() {return play_time;}
 
-    void playTrack();
-    void stopTrack() { this->music.stop(); this->isPlaying = false; }
-    void pauseTrack() { this->music.pause(); this->isPlaying = false;}
-    void changeTrack(std::string path);
+	float getPlayTime(){return music.getPlayingOffset().asSeconds();}
+	void setPlayTime(float pos){this->music.setPlayingOffset(sf::seconds(pos));}
 
-    float getDuration() { return duration; }
-
-    bool getPlaying() { return this->isPlaying; }
-    void setPlaying(bool p){ this->isPlaying = p; }
-
-    float getPlayingPos() {return this->music.getPlayingOffset().asSeconds();}
-
-    float getRatio();
-
-    std::string playTimeText();
+	float getRatio() { return this->music.getPlayingOffset().asSeconds()/this->music.getDuration().asSeconds(); }
 };
+
 #endif

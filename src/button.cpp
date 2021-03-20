@@ -1,49 +1,36 @@
 #include "button.h"
+#include <iostream>
 
-Button::Button(std::string path, sf::Color fillColor, sf::Vector2f position, sf::Vector2f dimensions) :GUI_Element()
-{   
-    this->position = position;
-    this->path = path;
-    this->fillColor = fillColor;
-    this->dimensions = dimensions;
-
-    this->buttonShape.setPosition(position);
-    this->buttonShape.setSize(dimensions);
-    this->buttonShape.setOutlineColor(sf::Color::Transparent);
-    this->buttonShape.setOutlineThickness(15);
-
-    if(!this->buttonTex.loadFromFile(path))
-        this->buttonShape.setFillColor(fillColor);
-    else
-        this->buttonShape.setTexture(&buttonTex);            
-}
-bool Button::isClicked(std::shared_ptr<sf::RenderWindow> window)
+Button::Button(sf::Vector2f pos, sf::Vector2f dim, sf::Text text, sf::Color fill) : GUI_Element()
 {
-    rect = this->buttonShape.getGlobalBounds();
+	this->buttonShape.setPosition(pos);
+	this->buttonShape.setSize(dim);
+	this->buttonShape.setOrigin(dim/2.0f);
+	this->buttonShape.setFillColor(fill);
 
-    pixelPos = sf::Mouse::getPosition(*window);
-    worldPos = window->mapPixelToCoords(pixelPos);
+	this->buttonText.setPosition(pos-dim/2.0f);
+	this->buttonText.setOrigin((pos-dim/2.0f)/2.0f);
+}
 
-        if (rect.contains(worldPos)) {
-            {   
-                if(this->clickState = true)
-                {   
-                    this->clickState = false;
-                    this->buttonShape.setOutlineColor(sf::Color::Transparent);
-                    return true;
-                }
-                else if(this->clickState = false)
-                {
-                    this->clickState = true;
-                    this->buttonShape.setOutlineColor(sf::Color(246,171,252));
-                    return true;
-                }
-            }
-        }
-        return false; 
+bool Button::clicked(std::shared_ptr<sf::RenderWindow> window)
+{
+	this->pixelPos = sf::Mouse::getPosition(*window);
+	this->worldPos = window->mapPixelToCoords(this->pixelPos);
+
+	if (this->worldPos.x >= this->buttonShape.getPosition().x
+	&& this->worldPos.x <= this->buttonShape.getPosition().x + this->buttonShape.getSize().x
+	&& this->worldPos.y >= this->buttonShape.getPosition().y
+	&& this->worldPos.y <= this->buttonShape.getPosition().y + this->buttonShape.getSize().y)
+		{
+			if(this->isClicked){this->isClicked = false;}
+			else{this->isClicked = true;}
+			std::cout << " clicked " << std::endl;
+			return true;
+		}
+	return false;
 }
 
 void Button::draw(std::shared_ptr<sf::RenderWindow> window)
 {
-    window->draw(this->buttonShape);
+	window->draw(this->buttonShape);
 }

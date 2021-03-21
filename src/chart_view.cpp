@@ -156,7 +156,6 @@ void Chart_View::demoChart()
     int counter = 0;
 	for(float i = 0; i < this->music_player->getDuration(); i++)
     {
-        std::cout<< i <<": yooo" <<std::endl;
         counter++;
         if(int(i)%6 == 0)
         {

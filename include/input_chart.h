@@ -14,21 +14,6 @@ private:
 	sf::Vector2i pixelPos;
 	sf::Vector2f worldPos;
 
-	struct InputNode
-	{
-		sf::Vector2f pos;
-		struct InputNode* left;
-		struct InputNode* right;
-
-		InputNode(sf::Vector2f inputPos)
-		{
-			pos = inputPos;
-
-			left = NULL;
-			right = NULL;
-		}
-	};
-
 public:
 	Input_Chart(std::shared_ptr<sf::RenderWindow> window);
 

@@ -19,7 +19,7 @@ class Chart_View
 		sf::Font font;
 		sf::Text text;
 
-		// std::vector<std::shared_ptr<GUI_Element>> graphics_list;
+		std::vector<std::shared_ptr<GUI_Element>> graphics_list;
 		std::vector<std::shared_ptr<Button>> button_list;
 		
 		std::shared_ptr<Button> play_button;
@@ -34,6 +34,7 @@ class Chart_View
 		Chart_View(std::shared_ptr<Chart_Logic> chart_logic);
 		void init();
 
+		void demoChart();
 		void chart_music();
 
 		void autoScroll();

@@ -35,6 +35,7 @@ public:
 
 	float getPlayTime(){return music.getPlayingOffset().asSeconds();}
 	void setPlayTime(float pos){this->music.setPlayingOffset(sf::seconds(pos));}
+	float getDuration() { return music.getDuration().asSeconds();}
 
 	float getRatio() { return this->music.getPlayingOffset().asSeconds()/this->music.getDuration().asSeconds(); }
 };

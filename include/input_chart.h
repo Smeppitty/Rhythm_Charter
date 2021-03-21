@@ -6,17 +6,44 @@
 class Input_Chart : public GUI_Element
 {
 private:
-    std::vector<std::shared_ptr<sf::RectangleShape>> inputList;
+	std::shared_ptr<sf::RenderWindow> window;
+	std::vector<std::shared_ptr<sf::RectangleShape>> inputList;
+	std::vector<std::shared_ptr<sf::RectangleShape>> lines;
+	std::vector<float> timings;
+
+	sf::Vector2i pixelPos;
+	sf::Vector2f worldPos;
+
+	struct InputNode
+	{
+		sf::Vector2f pos;
+		struct InputNode* left;
+		struct InputNode* right;
+
+		InputNode(sf::Vector2f inputPos)
+		{
+			pos = inputPos;
+
+			left = NULL;
+			right = NULL;
+		}
+	};
+
 public:
-    Input_Chart();
-    void addInput();
-    void delInput();
-    void moveInput();
+	Input_Chart(std::shared_ptr<sf::RenderWindow> window);
 
-    void importInput();
-    void exportInput();
+	std::vector<std::shared_ptr<sf::RectangleShape>> getInputList() { return inputList; }
 
-    void draw(std::shared_ptr<sf::RenderWindow> window);
+	bool isClicked(std::shared_ptr<sf::RenderWindow> window);
+
+	void addInput(float x, float y, float time);
+	void delInput(std::shared_ptr<sf::RectangleShape> input);
+	void moveInput(std::shared_ptr<sf::RenderWindow> window);
+
+	void importInput();
+	void exportInput();
+
+	void draw(std::shared_ptr<sf::RenderWindow> window);
 };
 
 #endif
